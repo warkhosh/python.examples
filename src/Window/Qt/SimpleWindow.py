@@ -1,18 +1,16 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget
-from PyQt5.QtGui import QIcon
 
 
-class CustomWindowIcon(QWidget):
+class SimpleWindow(QWidget):
     def __init__(self, application):
         super().__init__()
         self._application = application
         self.init_ui()
 
     def init_ui(self):
-        self.setGeometry(300, 300, 300, 220)
-        self.setWindowTitle('Custom icon')
-        self.setWindowIcon(QIcon('web.png'))
+        self.setGeometry(300, 300, 350, 250)
+        self.setWindowTitle('Simple Window 350x250')
         self.show()
         sys.exit(self.application.exec_())
 
@@ -21,4 +19,4 @@ class CustomWindowIcon(QWidget):
         return self._application
 
 
-object_ = CustomWindowIcon(QApplication(sys.argv))
+object_ = SimpleWindow(QApplication(sys.argv))

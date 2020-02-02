@@ -1,9 +1,8 @@
 import sys
+from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import (
     QWidget, QToolTip, QPushButton, QApplication
 )
-from PyQt5.QtGui import QFont
-from PyQt5.QtWidgets import QToolTip
 
 
 class Tooltip(QWidget):
@@ -17,7 +16,7 @@ class Tooltip(QWidget):
         self.setWindowTitle('Tooltips')
         self.init_tooltip_option()
 
-        self.setToolTip('This is window')
+        self.setToolTip('This is Window')
 
         btn = QPushButton('Button', self)
         btn.setToolTip('This is a <strong>QPushButton</strong> widget')
