@@ -2,7 +2,7 @@ import sys
 from PyQt5.QtWidgets import QWidget, QMainWindow, QPushButton, QApplication
 
 
-class Statusbar(QMainWindow):
+class StatusBar(QMainWindow):
     def __init__(self, application):
         super().__init__()
         self._application = application
@@ -10,7 +10,7 @@ class Statusbar(QMainWindow):
 
     def init_ui(self):
         self.setGeometry(300, 300, 250, 150)
-        self.setWindowTitle('Window: close event')
+        self.setWindowTitle('Window: Status bar')
 
         btn = QPushButton('Create', self)
         btn.setStatusTip('Create new item')
@@ -30,4 +30,4 @@ class Statusbar(QMainWindow):
         return self._application
 
 
-object_ = Statusbar(QApplication(sys.argv))
+object_ = StatusBar(QApplication(sys.argv))
