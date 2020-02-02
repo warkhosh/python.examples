@@ -1,9 +1,8 @@
 import sys
-from PyQt5.QtWidgets import QWidget, QMessageBox, QPushButton, QApplication
-from PyQt5.QtCore import QCoreApplication
+from PyQt5.QtWidgets import QWidget, QMainWindow, QMessageBox, QPushButton, QApplication
 
 
-class ClosingWindow(QWidget):
+class ClosingWindow(QMainWindow):
     def __init__(self, application):
         super().__init__()
         self._application = application

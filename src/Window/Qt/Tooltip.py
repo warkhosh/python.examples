@@ -1,11 +1,9 @@
 import sys
 from PyQt5.QtGui import QFont
-from PyQt5.QtWidgets import (
-    QWidget, QToolTip, QPushButton, QApplication
-)
+from PyQt5.QtWidgets import (QMainWindow, QWidget, QToolTip, QPushButton, QApplication)
 
 
-class Tooltip(QWidget):
+class Tooltip(QMainWindow):
     def __init__(self, application):
         super().__init__()
         self._application = application
