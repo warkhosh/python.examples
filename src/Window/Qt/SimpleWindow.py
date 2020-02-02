@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QDialog
 
 
 class SimpleWindow(QMainWindow):
@@ -9,8 +9,13 @@ class SimpleWindow(QMainWindow):
         self.init_ui()
 
     def init_ui(self):
-        self.setGeometry(300, 300, 350, 250)
+        self.move(300, 300)
+        self.resize(350, 250)
         self.setWindowTitle('Window: simple window 350x250')
+
+        # Фиксация размера окна
+        # self.setFixedSize(450, 350)
+
         self.show()
         sys.exit(self.application.exec_())
 
