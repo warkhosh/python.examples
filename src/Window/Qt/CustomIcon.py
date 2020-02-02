@@ -11,7 +11,7 @@ class CustomIcon(QWidget):
 
     def init_ui(self):
         self.setGeometry(300, 300, 300, 220)
-        self.setWindowTitle('Custom icon')
+        self.setWindowTitle('Window: custom icon')
         self.setWindowIcon(QtGui.QIcon('icon.png'))
         self.show()
         sys.exit(self.application.exec_())

@@ -10,7 +10,7 @@ class SimpleWindow(QWidget):
 
     def init_ui(self):
         self.setGeometry(300, 300, 350, 250)
-        self.setWindowTitle('Simple Window 350x250')
+        self.setWindowTitle('Window: simple window 350x250')
         self.show()
         sys.exit(self.application.exec_())
 

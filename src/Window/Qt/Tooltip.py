@@ -13,7 +13,7 @@ class Tooltip(QWidget):
 
     def init_ui(self):
         self.setGeometry(300, 300, 300, 200)
-        self.setWindowTitle('Tooltips')
+        self.setWindowTitle('Window: tooltips')
         self.init_tooltip_option()
 
         self.setToolTip('This is Window')
