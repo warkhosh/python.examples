@@ -1,8 +1,8 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget
 
 
-class SimpleWindow(QWidget):
+class SimpleWindow(QMainWindow):
     def __init__(self, application):
         super().__init__()
         self._application = application
