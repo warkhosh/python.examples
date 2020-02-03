@@ -1,13 +1,6 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QWidget, QPushButton, QHBoxLayout, QVBoxLayout
-from PyQt5 import QtGui, QtCore, QtWidgets
-from PyQt5.QtGui import QFont, QCursor, QIcon, QPixmap
-import platform
-
-if platform.system() == 'Linux':
-    FONT_SIZE = 9
-else:
-    FONT_SIZE = 12
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton, QHBoxLayout, QVBoxLayout
+from PyQt5 import QtWidgets
 
 
 class PositioningLayout(QWidget):
