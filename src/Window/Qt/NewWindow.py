@@ -1,7 +1,5 @@
 import sys
-from PyQt5.QtWidgets import (
-    QApplication, QMainWindow, QWidget, QPushButton, QAction, QLabel, QHBoxLayout, QVBoxLayout, QDesktopWidget
-)
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton, QDesktopWidget
 from PySide2.QtCore import Slot
 
 
@@ -16,19 +14,8 @@ class MainWindow(QMainWindow):
 
     def init_ui(self):
         self.move(300, 300)
-        self.resize(200, 150)
+        self.resize(200, 100)
         self.setWindowTitle("Main window")
-
-        # Menu
-        self.menu = self.menuBar()
-        self.file_menu = self.menu.addMenu("File")
-
-        # Exit QAction
-        exit_action = QAction("Еxit", self)
-        exit_action.setShortcut("Ctrl+Q")
-        exit_action.triggered.connect(self.exit_app)
-
-        self.file_menu.addAction(exit_action)
 
         widget = MainWidget()
 
@@ -51,19 +38,11 @@ class MainWidget(QWidget):
         self.init_ui()
 
     def init_ui(self):
-        # Set the layout to the QWidget
-        self.setLayout(self.layout())
+        self.btn_new_window.move(0, 0)
+        self.btn_close.move(0, 40)
 
         self.btn_close.clicked.connect(self.exit_app)
         self.btn_new_window.clicked.connect(self.another_window)
-
-    @Slot()
-    def layout(self):
-        layout = QVBoxLayout()
-        layout.addWidget(self.btn_new_window)
-        layout.addWidget(self.btn_close)
-
-        return layout
 
     @Slot()
     def exit_app(self):
