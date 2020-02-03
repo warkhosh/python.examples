@@ -3,9 +3,8 @@ from PyQt5.QtWidgets import QWidget, QMainWindow, QMessageBox, QPushButton, QApp
 
 
 class ClosingWindow(QMainWindow):
-    def __init__(self, application):
-        super().__init__()
-        self._application = application
+    def __init__(self):
+        QMainWindow.__init__(self)
         self.init_ui()
 
     def init_ui(self):
@@ -22,13 +21,6 @@ class ClosingWindow(QMainWindow):
         # btn.clicked.connect(QCoreApplication.instance().quit)
         # btn.resize(btn.sizeHint())
         # btn.move(50, 50)
-
-        self.show()
-        sys.exit(self.application.exec_())
-
-    @property
-    def application(self):
-        return self._application
 
     """
     Переопределяем обработчик события closeEvent
@@ -48,4 +40,12 @@ class ClosingWindow(QMainWindow):
             event.ignore()
 
 
-object_ = ClosingWindow(QApplication(sys.argv))
+if __name__ == "__main__":
+    # Qt Application
+    app = QApplication(sys.argv)
+
+    window = ClosingWindow()
+    window.show()
+
+    # Execute application
+    sys.exit(app.exec_())

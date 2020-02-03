@@ -2,17 +2,24 @@ import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton, QGridLayout, QLabel, QLineEdit, QTextEdit
 
 
-class PositioningGrid(QWidget):
-    def __init__(self, application):
-        super().__init__()
-        self._application = application
+class PositioningGrid(QMainWindow):
+    def __init__(self):
+        QMainWindow.__init__(self)
         self.init_ui()
 
     def init_ui(self):
         self.move(300, 300)
         self.resize(350, 250)
         self.setWindowTitle('Window: positioning grid')
+        self.setCentralWidget(PositioningGridWidget())
 
+
+class PositioningGridWidget(QWidget):
+    def __init__(self):
+        QWidget.__init__(self)
+        self.init_ui()
+
+    def init_ui(self):
         label_title = QLabel('Title')
         label_author = QLabel('Author')
         label_review = QLabel('Review')
@@ -33,14 +40,16 @@ class PositioningGrid(QWidget):
         grid.addWidget(label_review, 3, 0)
         grid.addWidget(field_review, 3, 1, 5, 1)
 
+        # Set the layout to the QWidget
         self.setLayout(grid)
 
-        self.show()
-        sys.exit(self.application.exec_())
 
-    @property
-    def application(self):
-        return self._application
+if __name__ == "__main__":
+    # Qt Application
+    app = QApplication(sys.argv)
 
+    window = PositioningGrid()
+    window.show()
 
-object_ = PositioningGrid(QApplication(sys.argv))
+    # Execute application
+    sys.exit(app.exec_())

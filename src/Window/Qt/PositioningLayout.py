@@ -1,20 +1,30 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton, QHBoxLayout, QVBoxLayout
-from PyQt5 import QtWidgets
 
 
-class PositioningLayout(QWidget):
-    def __init__(self, application):
-        super().__init__()
-        self._application = application
+class PositioningLayout(QMainWindow):
+    def __init__(self):
+        QMainWindow.__init__(self)
         self.init_ui()
 
     def init_ui(self):
         self.move(300, 300)
         self.resize(550, 250)
         self.setWindowTitle('Window: positioning layout')
+        self.setCentralWidget(PositioningLayoutWidget())
 
-        btn_ok = QtWidgets.QPushButton("OK")
+
+class PositioningLayoutWidget(QWidget):
+    def __init__(self):
+        QWidget.__init__(self)
+        self.init_ui()
+
+    def init_ui(self):
+        # Set the layout to the QWidget
+        self.setLayout(self.layout())
+
+    def layout(self):
+        btn_ok = QPushButton("OK")
         btn_cancel = QPushButton("Cancel")
 
         horizontal_box = QHBoxLayout()
@@ -26,14 +36,15 @@ class PositioningLayout(QWidget):
         vertical_box.addStretch(1)
         vertical_box.addLayout(horizontal_box)
 
-        self.setLayout(vertical_box)
-
-        self.show()
-        sys.exit(self.application.exec_())
-
-    @property
-    def application(self):
-        return self._application
+        return vertical_box
 
 
-object_ = PositioningLayout(QApplication(sys.argv))
+if __name__ == "__main__":
+    # Qt Application
+    app = QApplication(sys.argv)
+
+    window = PositioningLayout()
+    window.show()
+
+    # Execute application
+    sys.exit(app.exec_())

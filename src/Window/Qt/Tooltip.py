@@ -4,9 +4,8 @@ from PyQt5.QtWidgets import (QMainWindow, QWidget, QToolTip, QPushButton, QAppli
 
 
 class Tooltip(QMainWindow):
-    def __init__(self, application):
-        super().__init__()
-        self._application = application
+    def __init__(self):
+        QMainWindow.__init__(self)
         self.init_ui()
 
     def init_ui(self):
@@ -16,21 +15,31 @@ class Tooltip(QMainWindow):
 
         self.setToolTip('This is Window')
 
-        btn = QPushButton('Button', self)
-        btn.setToolTip('This is a <strong>QPushButton</strong> widget')
-        btn.resize(btn.sizeHint())
-        btn.move(50, 50)
-
-        self.show()
-        sys.exit(self.application.exec_())
+        self.setCentralWidget(TooltipWidget())
 
     @staticmethod
     def init_tooltip_option():
         QToolTip.setFont(QFont('Verdana', 10))
 
-    @property
-    def application(self):
-        return self._application
+
+class TooltipWidget(QWidget):
+    def __init__(self):
+        QWidget.__init__(self)
+        self.init_ui()
+
+    def init_ui(self):
+        btn = QPushButton('Button', self)
+        btn.setToolTip('This is a <strong>QPushButton</strong> widget')
+        btn.resize(btn.sizeHint())
+        btn.move(50, 50)
 
 
-object_ = Tooltip(QApplication(sys.argv))
+if __name__ == "__main__":
+    # Qt Application
+    app = QApplication(sys.argv)
+
+    window = Tooltip()
+    window.show()
+
+    # Execute application
+    sys.exit(app.exec_())

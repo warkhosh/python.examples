@@ -3,9 +3,8 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QMenu, QAction
 
 
 class Menubar(QMainWindow):
-    def __init__(self, application):
-        super().__init__()
-        self._application = application
+    def __init__(self):
+        QMainWindow.__init__(self)
         self.init_ui()
 
     def init_ui(self):
@@ -14,13 +13,6 @@ class Menubar(QMainWindow):
 
         self.create_menu_file()
         self.create_menu_help()
-
-        self.show()
-        sys.exit(self.application.exec_())
-
-    @property
-    def application(self):
-        return self._application
 
     def create_menu_file(self):
         menu = self.menuBar().addMenu('File')
@@ -56,4 +48,12 @@ class Menubar(QMainWindow):
         menu.addAction(item_help)
 
 
-object_ = Menubar(QApplication(sys.argv))
+if __name__ == "__main__":
+    # Qt Application
+    app = QApplication(sys.argv)
+
+    window = Menubar()
+    window.show()
+
+    # Execute application
+    sys.exit(app.exec_())
